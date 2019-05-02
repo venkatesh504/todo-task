@@ -18,12 +18,12 @@ export const applyDrag = (arr, dragResult) => {
   
   export const generateItems = (count, creator) => {
     const result = [];
-    console.log('count in utile page ' , count);
-    
+    // console.log("creator",creator)
+    // console.log("ccount",count)
     for (let i = 0; i < count; i++) {
-      result.push(creator(i));
+      result.push(creator(i)); 
+      console.log("ccount",result)
     }
-    console.log("result",result)
     return result;
     
   };

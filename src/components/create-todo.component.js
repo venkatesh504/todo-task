@@ -3,8 +3,8 @@ import { Container, Draggable } from 'react-smooth-dnd';
 
 import { applyDrag, generateItems } from "./utils";
 
-const columnNames = ["lorem['1']"];
-const lorem = ["1","2","3"];
+const columnNames = ["1","2"];
+const lorem = ["one","two","three"];
 
 
 const cardColors = [
@@ -26,12 +26,15 @@ const pickColor = () => {
 
 class CreateTodo  extends Component{
  
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     
         this.onColumnDrop = this.onColumnDrop.bind(this);
         this.onCardDrop = this.onCardDrop.bind(this);
         this.getCardPayload = this.getCardPayload.bind(this);
+    
         this.state = {
           scene: {
             type: "container",
@@ -46,14 +49,14 @@ class CreateTodo  extends Component{
                 orientation: "vertical",
                 className: "card-container"
               },
-              children: generateItems(lorem.length, j => ({
+              children: generateItems(this.state.value, j => ({
                 type: "draggable",
                 id: `${i}${j}`,
                 props: {
                   className: "card",
                   style: { backgroundColor: pickColor() }
                 },
-                data: columnNames[i]
+                data: lorem[j]
               }))
             }))
     
@@ -120,6 +123,13 @@ class CreateTodo  extends Component{
                   </Draggable>
                 );
               })}
+   <form onSubmit={this.handleSubmit}>
+        <label>
+          Name:
+          <input type="text" value={this.state.value} onChange={this.handleChange} />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
             </Container>
           </div>
         );

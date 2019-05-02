@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";  
 import  CreateTodo  from "./components/create-todo.component";
+import Array from "./components/array.component"
 import Home from "./components/home.component";
 class App extends Component {
   render() {
@@ -24,6 +25,9 @@ class App extends Component {
                 <li className="navbar-item">
                   <Link to="/create" className="nav-link">Create Todo</Link>
                 </li>
+                <li className="navbar-item">
+                  <Link to="/array" className="nav-link">array</Link>
+                </li>
               
               </ul>
             </div>
@@ -31,7 +35,7 @@ class App extends Component {
           <div className="container-fluid ">
           <Route path="/create" component={CreateTodo} />
           <Route path="/" exact component={Home} />
-          {/* <Route path="/todo" exact component={TodosList} /> */}
+          <Route path="/array" exact component={Array} />
 
       
         </div>
